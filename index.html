@@ -3,9 +3,1227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
+    <title>PRIME GRILL 1302 | Family-Style Steakhouse in Condado, San Juan</title>
+    <meta name="description" content="Experience prime hand-cut meats and exceptional dining at PRIME GRILL 1302, a family-style steakhouse in the heart of Condado, San Juan, Puerto Rico.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b8941f;
+        }
+
+        /* Animated Background */
+        .meat-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+        }
+
+        /* Navigation */
+        #navbar {
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        #navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.4) 100%);
+        }
+
+        .hero-title {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gold Button */
+        .btn-primary {
+            background: #d4af37;
+            color: #1a1a1a;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            padding: 16px 40px;
+            border: 2px solid #ffffff;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: #d4af37;
+            margin: 20px auto;
+        }
+
+        /* Fade In Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image Hover Effect */
+        .image-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-zoom {
+            transition: transform 0.5s ease;
+        }
+
+        .image-container:hover .image-zoom {
+            transform: scale(1.1);
+        }
+
+        /* Glass Effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-effect:hover {
+            background: rgba(255, 255, 255, 1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Menu Item Card */
+        .menu-item {
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(30px);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Particle Background */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Image Loaded Effect */
+        img {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        /* Reservation Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        /* Text Shadow for Hero */
+        .text-shadow {
+            text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Highlight Text */
+        .highlight {
+            color: #d4af37;
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-    <!-- Content will be added here -->
+    <!-- Animated Background -->
+    <div class="meat-background"></div>
+
+    <!-- Canvas for floating particles -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="flex items-center">
+                        <img src="./assets/image_3.png" alt="PRIME GRILL 1302" class="h-12 md:h-16 loaded">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-base text-gray-700 hover:text-black font-medium" style="font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">HOME</a>
+                    <a href="#story" class="nav-link text-base text-gray-700 hover:text-black font-medium" style="font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">OUR STORY</a>
+                    <a href="#menu" class="nav-link text-base text-gray-700 hover:text-black font-medium" style="font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">MENU</a>
+                    <a href="#gallery" class="nav-link text-base text-gray-700 hover:text-black font-medium" style="font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">GALLERY</a>
+                    <a href="#private-gatherings" class="nav-link text-base text-gray-700 hover:text-black font-medium" style="font-family: 'Montserrat', sans-serif; letter-spacing: 1px;">PRIVATE EVENTS</a>
+                    <a href="#reservations" class="btn-primary">RESERVE</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-50">
+            <div class="p-6">
+                <button id="close-menu-btn" class="text-gray-700 float-right focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div class="clear-both mt-12 space-y-6">
+                    <a href="#home" class="block text-gray-700 hover:text-black text-lg font-medium" style="font-family: 'Montserrat', sans-serif;">HOME</a>
+                    <a href="#story" class="block text-gray-700 hover:text-black text-lg font-medium" style="font-family: 'Montserrat', sans-serif;">OUR STORY</a>
+                    <a href="#menu" class="block text-gray-700 hover:text-black text-lg font-medium" style="font-family: 'Montserrat', sans-serif;">MENU</a>
+                    <a href="#gallery" class="block text-gray-700 hover:text-black text-lg font-medium" style="font-family: 'Montserrat', sans-serif;">GALLERY</a>
+                    <a href="#private-gatherings" class="block text-gray-700 hover:text-black text-lg font-medium" style="font-family: 'Montserrat', sans-serif;">PRIVATE EVENTS</a>
+                    <a href="#reservations" class="block btn-primary text-center mt-8">RESERVE</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="./assets/image_1.jpg" alt="PRIME GRILL 1302 Premium Steaks" class="w-full h-full object-cover loaded">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 class="hero-title text-5xl md:text-7xl font-light text-white mb-6 text-shadow" style="font-family: 'Montserrat', sans-serif; letter-spacing: 4px;">
+                PRIME GRILL 1302
+            </h1>
+            <p class="hero-subtitle text-xl md:text-3xl text-white mb-4 font-light text-shadow" style="font-family: 'Lato', serif;">
+                Prime Cuts, Family Roots
+            </p>
+            <p class="hero-subtitle text-lg md:text-xl text-white mb-10 font-light text-shadow" style="font-family: 'Lato', serif; opacity: 0.95;">
+                A Family-Style Steakhouse in the Heart of Condado
+            </p>
+            <div class="hero-cta space-x-4">
+                <a href="#reservations" class="btn-primary">Reserve a Table</a>
+                <a href="#menu" class="btn-secondary">View Menu</a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+            <div class="animate-bounce">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="py-20 md:py-24 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl md:text-5xl font-light mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                        Welcome to Excellence
+                    </h2>
+                    <div class="section-divider mx-0"></div>
+                    <p class="text-lg leading-relaxed mb-6" style="color: #6b7280;">
+                        At PRIME GRILL 1302, we believe in the art of perfect dining. Our family-style steakhouse brings together the finest <span class="highlight">hand-cut prime meats</span>, fresh local ingredients, and warm hospitality in the prestigious Condado neighborhood of San Juan, Puerto Rico.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-8" style="color: #6b7280;">
+                        Each dish is crafted with passion and precision, honoring traditional techniques while embracing culinary innovation. From our signature steaks to our diverse menu of seafood, pastas, and island-inspired specialties, every plate tells a story of quality and care.
+                    </p>
+                    <a href="#story" class="btn-primary">Discover Our Story</a>
+                </div>
+                <div class="fade-in image-container">
+                    <img src="./assets/image_2.jpg" alt="Prime Steak Dinner" class="image-zoom w-full h-auto rounded-lg shadow-2xl loaded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-20 md:py-24 bg-gray-50 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                    The PRIME GRILL Experience
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-lg max-w-3xl mx-auto" style="color: #6b7280;">
+                    Three pillars define our commitment to exceptional dining
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="fade-in text-center p-8 glass-effect rounded-lg">
+                    <div class="text-6xl mb-4">🥩</div>
+                    <h3 class="text-2xl font-normal mb-3" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                        Prime Quality
+                    </h3>
+                    <p style="color: #6b7280;">
+                        Hand-selected, premium cuts of meat expertly aged and prepared to perfection by our master chefs.
+                    </p>
+                </div>
+
+                <div class="fade-in text-center p-8 glass-effect rounded-lg">
+                    <div class="text-6xl mb-4">🌴</div>
+                    <h3 class="text-2xl font-normal mb-3" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                        Local Excellence
+                    </h3>
+                    <p style="color: #6b7280;">
+                        Fresh ingredients sourced from the finest local Puerto Rican farms and fisheries for authentic island flavors.
+                    </p>
+                </div>
+
+                <div class="fade-in text-center p-8 glass-effect rounded-lg">
+                    <div class="text-6xl mb-4">👨‍👩‍👧‍👦</div>
+                    <h3 class="text-2xl font-normal mb-3" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                        Family Style
+                    </h3>
+                    <p style="color: #6b7280;">
+                        Warm, welcoming atmosphere where every guest is treated like family in our elegant yet comfortable setting.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview Section -->
+    <section id="menu" class="py-20 md:py-24 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                    Our Menu
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-lg max-w-3xl mx-auto" style="color: #6b7280;">
+                    Explore our carefully curated selection of premium steaks, fresh seafood, and island-inspired specialties
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Menu Category 1 -->
+                <div class="menu-item fade-in bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="image-container">
+                        <img src="./assets/image_5.jpg" alt="Prime Steaks" class="image-zoom w-full h-64 object-cover loaded">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-normal mb-2" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                            Signature Steaks
+                        </h3>
+                        <p class="mb-4" style="color: #6b7280;">
+                            Hand-cut prime beef aged to perfection. Choose from ribeye, New York strip, filet mignon, and our signature porterhouse.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Menu Category 2 -->
+                <div class="menu-item fade-in bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="image-container">
+                        <img src="./assets/image_6.png" alt="Fresh Seafood" class="image-zoom w-full h-64 object-cover loaded">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-normal mb-2" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                            Fresh Seafood
+                        </h3>
+                        <p class="mb-4" style="color: #6b7280;">
+                            Daily catches from local waters including grilled salmon, mahi-mahi, lobster tail, and our famous seafood paella.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Menu Category 3 -->
+                <div class="menu-item fade-in bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <div class="image-container">
+                        <img src="./assets/image_0.png" alt="Specialty Dishes" class="image-zoom w-full h-64 object-cover loaded">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-normal mb-3" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                            Island Specialties
+                        </h3>
+                        <p class="mb-4" style="color: #6b7280;">
+                            Unique creations including our truffle risotto, artisan pizzetas, house-made pastas, and Puerto Rican-inspired dishes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Menu Image -->
+            <div class="fade-in text-center mb-8">
+                <div class="image-container inline-block rounded-lg overflow-hidden shadow-2xl">
+                    <img src="./assets/image_7.png" alt="PRIME GRILL 1302 Full Menu" class="image-zoom max-w-full h-auto loaded">
+                </div>
+            </div>
+
+            <div class="text-center fade-in">
+                <p class="text-lg mb-6" style="color: #6b7280;">
+                    Our menu features the finest ingredients prepared with passion and expertise
+                </p>
+                <a href="#reservations" class="btn-primary">Reserve Your Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Timeline -->
+    <section id="story" class="py-20 md:py-24 bg-gray-50 relative z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                    Our Story
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-lg max-w-3xl mx-auto" style="color: #6b7280;">
+                    A journey rooted in passion for exceptional food and warm hospitality
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 fade-in">
+                <div class="prose max-w-none">
+                    <p class="text-lg leading-relaxed mb-6" style="color: #6b7280;">
+                        In the heart of San Juan's prestigious Condado neighborhood, <span class="highlight">PRIME GRILL 1302</span> stands as a testament to the belief that great dining brings people together. Our story begins with a simple yet profound vision: to create a steakhouse where premium quality meets family warmth.
+                    </p>
+
+                    <p class="text-lg leading-relaxed mb-6" style="color: #6b7280;">
+                        What sets us apart is our unwavering commitment to <span class="highlight">excellence in every detail</span>. From hand-selecting the finest cuts of prime beef to sourcing fresh ingredients from Puerto Rico's best local farms and fisheries, we ensure that every dish that leaves our kitchen meets the highest standards.
+                    </p>
+
+                    <p class="text-lg leading-relaxed mb-6" style="color: #6b7280;">
+                        Our master chefs bring decades of culinary expertise, blending traditional steakhouse techniques with innovative island-inspired flavors. The result is a menu that honors classic favorites while celebrating the vibrant tastes of Puerto Rico.
+                    </p>
+
+                    <p class="text-lg leading-relaxed" style="color: #6b7280;">
+                        Located in one of San Juan's most sought-after dining destinations, we've created more than just a restaurant—we've built a <span class="highlight">gathering place</span> where memories are made, celebrations unfold, and every meal becomes an experience to remember. Whether you're joining us for an intimate dinner, a family celebration, or a business gathering, our team is dedicated to ensuring your visit is nothing short of exceptional.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 md:py-24 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                    Gallery
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-lg max-w-3xl mx-auto" style="color: #6b7280;">
+                    Experience the elegance and artistry of PRIME GRILL 1302
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="fade-in image-container h-80">
+                    <img src="./assets/image_1.jpg" alt="Prime Steak Plating" class="image-zoom w-full h-full object-cover rounded-lg loaded">
+                </div>
+                <div class="fade-in image-container h-80">
+                    <img src="./assets/image_2.jpg" alt="Restaurant Ambiance" class="image-zoom w-full h-full object-cover rounded-lg loaded">
+                </div>
+                <div class="fade-in image-container h-80">
+                    <img src="./assets/image_5.jpg" alt="Premium Cuts" class="image-zoom w-full h-full object-cover rounded-lg loaded">
+                </div>
+                <div class="fade-in image-container h-80">
+                    <img src="./assets/image_6.png" alt="Fresh Seafood Display" class="image-zoom w-full h-full object-cover rounded-lg loaded">
+                </div>
+                <div class="fade-in image-container h-80">
+                    <img src="./assets/image_0.png" alt="Gourmet Presentation" class="image-zoom w-full h-full object-cover rounded-lg loaded">
+                </div>
+                <div class="fade-in image-container h-80">
+                    <img src="./assets/image_4.png" alt="Dining Experience" class="image-zoom w-full h-full object-cover rounded-lg loaded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Gatherings Section -->
+    <section id="private-gatherings" class="py-20 md:py-24 bg-gray-50 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                    Private Events & Gatherings
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-lg max-w-3xl mx-auto" style="color: #6b7280;">
+                    Host your special occasion in an elegant setting with personalized service
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="bg-white rounded-2xl shadow-xl p-8">
+                        <h3 class="text-3xl font-light mb-6" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                            Unforgettable Celebrations
+                        </h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4">🎉</div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2" style="color: #1a1a1a;">Corporate Events</h4>
+                                    <p style="color: #6b7280;">Impress clients and colleagues with our private dining spaces perfect for business dinners and corporate gatherings.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4">💍</div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2" style="color: #1a1a1a;">Special Celebrations</h4>
+                                    <p style="color: #6b7280;">From anniversaries to engagements, make your milestone moments truly memorable in our elegant atmosphere.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="text-3xl mr-4">🎂</div>
+                                <div>
+                                    <h4 class="text-xl font-semibold mb-2" style="color: #1a1a1a;">Family Gatherings</h4>
+                                    <p style="color: #6b7280;">Gather your loved ones for birthdays, reunions, and special family occasions in our warm, welcoming environment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+                            <p class="text-sm mb-4" style="color: #6b7280;">
+                                <strong>Our private event services include:</strong>
+                            </p>
+                            <ul class="text-sm space-y-2" style="color: #6b7280;">
+                                <li>✓ Customized menu planning</li>
+                                <li>✓ Dedicated event coordinator</li>
+                                <li>✓ Private or semi-private dining spaces</li>
+                                <li>✓ Professional service staff</li>
+                                <li>✓ Audio/visual equipment available</li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-8 text-center">
+                            <p class="text-lg mb-4" style="color: #1a1a1a; font-weight: 600;">
+                                Contact us to plan your perfect event
+                            </p>
+                            <a href="mailto:info@prime1302pr.com" class="btn-primary">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="image-container rounded-2xl overflow-hidden shadow-2xl mb-6">
+                        <img src="./assets/image_2.jpg" alt="Private Dining Experience" class="image-zoom w-full h-96 object-cover loaded">
+                    </div>
+                    <div class="image-container rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="./assets/image_1.jpg" alt="Elegant Table Setting" class="image-zoom w-full h-96 object-cover loaded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservations Section -->
+    <section id="reservations" class="py-20 md:py-24 bg-white relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                    Reserve Your Table
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-lg max-w-3xl mx-auto mb-8" style="color: #6b7280;">
+                    Join us for an exceptional dining experience at PRIME GRILL 1302
+                </p>
+
+                <div class="inline-block bg-gray-50 rounded-2xl p-8 shadow-lg">
+                    <p class="text-xl mb-6" style="color: #1a1a1a; font-weight: 600;">
+                        For reservations, please contact us:
+                    </p>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Email</p>
+                            <a href="mailto:info@prime1302pr.com" class="text-2xl hover:text-opacity-80 transition-colors" style="color: #d4af37; font-weight: 600;">
+                                info@prime1302pr.com
+                            </a>
+                        </div>
+                        <div class="pt-4">
+                            <button id="openReservationForm" class="btn-primary">
+                                Request a Reservation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-24 bg-gray-50 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-light mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                    Visit Us
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="fade-in">
+                    <h3 class="text-2xl font-normal mb-6" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                        Location & Hours
+                    </h3>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold mb-2" style="color: #1a1a1a;">Address</h4>
+                            <p style="color: #6b7280;">
+                                Condado<br>
+                                San Juan, Puerto Rico
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-2" style="color: #1a1a1a;">Email</h4>
+                            <p>
+                                <a href="mailto:info@prime1302pr.com" class="hover:underline" style="color: #d4af37;">info@prime1302pr.com</a>
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-2" style="color: #1a1a1a;">Hours</h4>
+                            <p style="color: #6b7280;">
+                                Please contact us for current hours<br>
+                                Reservations recommended
+                            </p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-2" style="color: #1a1a1a;">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.facebook.com/PrimeGrill1302/" target="_blank" rel="noopener noreferrer" class="text-3xl hover:opacity-80 transition-opacity" style="color: #d4af37;">
+                                    📘
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <a href="#reservations" class="btn-primary">Make a Reservation</a>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="fade-in">
+                    <div class="bg-white p-8 rounded-lg shadow-lg h-full">
+                        <img src="./assets/image_8.png" alt="PRIME GRILL 1302" class="w-48 mb-6 loaded">
+                        <h3 class="text-2xl font-normal mb-4" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                            The PRIME GRILL 1302 Experience
+                        </h3>
+                        <p class="mb-4" style="color: #6b7280;">
+                            Nestled in the vibrant Condado neighborhood, PRIME GRILL 1302 offers a sophisticated yet welcoming atmosphere where culinary excellence meets warm hospitality.
+                        </p>
+                        <p class="mb-4" style="color: #6b7280;">
+                            Our extensive menu features premium hand-cut steaks, fresh seafood from local waters, artisan pastas, creative pizzetas, and authentic Puerto Rican specialties—all prepared with the finest ingredients the island has to offer.
+                        </p>
+                        <p class="mb-6" style="color: #6b7280;">
+                            Whether you're celebrating a special occasion or enjoying an evening out with family and friends, our dedicated team is committed to making your visit memorable.
+                        </p>
+                        <div class="border-t pt-6" style="border-color: #d4af37;">
+                            <p class="text-sm italic" style="color: #6b7280;">
+                                "We look forward to welcoming you to our table."
+                            </p>
+                            <p class="text-sm font-semibold mt-2" style="color: #1a1a1a;">
+                                - The PRIME GRILL 1302 Team
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- Column 1: Brand -->
+                <div>
+                    <img src="./assets/image_3.png" alt="PRIME GRILL 1302" class="h-16 mb-4 brightness-0 invert loaded">
+                    <p class="text-sm mb-2">Condado, San Juan, Puerto Rico</p>
+                    <p class="text-sm">
+                        <a href="mailto:info@prime1302pr.com" class="hover:text-gray-400">info@prime1302pr.com</a>
+                    </p>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-xl font-normal mb-4" style="font-family: 'Montserrat', sans-serif;">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-gray-400">Home</a></li>
+                        <li><a href="#story" class="hover:text-gray-400">Our Story</a></li>
+                        <li><a href="#menu" class="hover:text-gray-400">Menu</a></li>
+                        <li><a href="#gallery" class="hover:text-gray-400">Gallery</a></li>
+                        <li><a href="#private-gatherings" class="hover:text-gray-400">Private Events</a></li>
+                        <li><a href="#reservations" class="hover:text-gray-400">Reservations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Social -->
+                <div>
+                    <h4 class="text-xl font-normal mb-4" style="font-family: 'Montserrat', sans-serif;">Connect With Us</h4>
+                    <p class="text-sm mb-4">
+                        Follow us on social media for updates, special offers, and behind-the-scenes glimpses of our culinary creations.
+                    </p>
+                    <a href="https://www.facebook.com/PrimeGrill1302/" target="_blank" rel="noopener noreferrer" class="inline-block hover:opacity-80 transition-opacity">
+                        <span class="text-2xl">📘 Facebook</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p class="text-sm">
+                    © 2025 PRIME GRILL 1302. All rights reserved. | Prime Cuts, Family Roots
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reservation Modal -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content p-8 md:p-12">
+            <button id="closeModal" class="float-right text-gray-500 hover:text-gray-700 text-3xl font-light">&times;</button>
+            <div class="clear-both"></div>
+
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl mb-4 font-light" style="font-family: 'Montserrat', sans-serif; color: #1a1a1a;">
+                    Request a Reservation
+                </h2>
+                <p class="text-gray-600">
+                    Fill out the form below and we'll confirm your reservation via email
+                </p>
+            </div>
+
+            <form id="reservationForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200 outline-none transition-all" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200 outline-none transition-all" placeholder="your@email.com">
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200 outline-none transition-all" placeholder="(787) 000-0000">
+                    </div>
+                    <div>
+                        <label for="guests" class="block text-sm font-medium text-gray-700 mb-2">Number of Guests *</label>
+                        <select id="guests" name="guests" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200 outline-none transition-all">
+                            <option value="">Select guests</option>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+                            <option value="7">7 Guests</option>
+                            <option value="8">8 Guests</option>
+                            <option value="9">9+ Guests</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Preferred Date *</label>
+                        <input type="date" id="date" name="date" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200 outline-none transition-all">
+                    </div>
+                    <div>
+                        <label for="time" class="block text-sm font-medium text-gray-700 mb-2">Preferred Time *</label>
+                        <select id="time" name="time" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200 outline-none transition-all">
+                            <option value="">Select time</option>
+                            <option value="17:00">5:00 PM</option>
+                            <option value="17:30">5:30 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="18:30">6:30 PM</option>
+                            <option value="19:00">7:00 PM</option>
+                            <option value="19:30">7:30 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                            <option value="20:30">8:30 PM</option>
+                            <option value="21:00">9:00 PM</option>
+                            <option value="21:30">9:30 PM</option>
+                            <option value="22:00">10:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Special Requests (Optional)</label>
+                    <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-gray-200 outline-none transition-all resize-none" placeholder="Any special occasions, dietary restrictions, or preferences..."></textarea>
+                </div>
+
+                <div class="text-center pt-4">
+                    <button type="submit" class="btn-primary">
+                        Submit Reservation Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ========== CANVAS PARTICLE ANIMATION ==========
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.3 + 0.1;
+                this.color = ['rgba(212, 175, 55, 0.3)', 'rgba(26, 26, 26, 0.1)', 'rgba(245, 245, 245, 0.4)'][Math.floor(Math.random() * 3)];
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+                this.x += Math.sin(Date.now() * 0.001 + this.y * 0.01) * 0.2;
+                this.y += Math.cos(Date.now() * 0.001 + this.x * 0.01) * 0.2;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fill();
+            }
+        }
+
+        const particles = [];
+        const particleCount = window.innerWidth < 768 ? 30 : 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        // ========== NAVIGATION SCROLL EFFECT ==========
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ========== MOBILE MENU ==========
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // ========== SCROLL ANIMATIONS ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ========== SMOOTH SCROLLING ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ========== PRELOAD IMAGES ==========
+        window.addEventListener('load', () => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => {
+                        img.classList.add('loaded');
+                    });
+                }
+            });
+        });
+
+        // ========== RESERVATION MODAL ==========
+        const modal = document.getElementById('reservationModal');
+        const openModalBtn = document.getElementById('openReservationForm');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ========== RESERVATION FORM SUBMIT ==========
+        const reservationForm = document.getElementById('reservationForm');
+
+        reservationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(reservationForm);
+            const data = Object.fromEntries(formData);
+
+            // Create mailto link with form data
+            const subject = encodeURIComponent('Reservation Request - PRIME GRILL 1302');
+            const body = encodeURIComponent(`
+Reservation Request
+
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Number of Guests: ${data.guests}
+Preferred Date: ${data.date}
+Preferred Time: ${data.time}
+Special Requests: ${data.message || 'None'}
+
+Please confirm this reservation at your earliest convenience.
+            `);
+
+            window.location.href = `mailto:info@prime1302pr.com?subject=${subject}&body=${body}`;
+
+            // Close modal and reset form
+            setTimeout(() => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                reservationForm.reset();
+            }, 1000);
+        });
+
+        // ========== ACTIVE NAV LINK ==========
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
